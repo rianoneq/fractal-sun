@@ -36,12 +36,11 @@ def draw_my_fractal(t, algorithm, angle, distance):
             t.left(angle)
         elif act == "+":
             t.right(angle)
-    
 
-def settings(t, window,iterations=iterations):
+def settings(t, window, iterations=iterations):
     #t.color('red')
     window.bgcolor('black')
-    t.speed(0)
+    t.speed(1000)
     t.hideturtle()
     t.up()
     t.backward(2*(iterations))
@@ -60,13 +59,13 @@ def main(iterations=iterations, axiom=axiom, rules=rules, angle=angle, distance=
     t = turtle.Turtle()
     window = turtle.Screen()
     algorithm = make_my_system(axiom, iterations, rules, t)
-    
-    for n in colors:
-        t.color(n)
-        settings(t, window)
-        zero_fractal_position(t)
 
-        draw_my_fractal(t, algorithm, angle, distance)
+    while True:
+        for n in colors:
+            t.color(n)
+            settings(t, window)
+            zero_fractal_position(t)
+            draw_my_fractal(t, algorithm, angle, distance)
 
     window.exitonclick()
 
